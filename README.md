@@ -1,6 +1,6 @@
 # http-transport-circuit-breaker
 
-> Basic circuit breaker based on Levee.
+> Basic circuit breaker based on [Levee](https://github.com/krakenjs/levee).
 
 ## Installation
 
