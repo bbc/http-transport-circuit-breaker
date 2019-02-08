@@ -1,0 +1,35 @@
+{
+  "name": "@bbc/http-transport-circuit-breaker",
+  "version": "1.0.0",
+  "description": "Basic circuit breaker based on Levee.",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha",
+    "lint": "eslint .",
+    "coverage": "istanbul cover _mocha -- -R dot"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bbc/http-transport-circuit-breaker.git"
+  },
+  "author": "ibl-team@lists.forge.bbc.co.uk",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bbc/http-transport-circuit-breaker/issues"
+  },
+  "engines": {
+    "node": ">=8.0.0"
+  },
+  "homepage": "https://github.com/bbc/http-transport-circuit-breaker",
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "eslint": "^2.4.0",
+    "eslint-config-iplayer-es6": "^1.3.0",
+    "istanbul": "^0.4.1",
+    "mocha": "^5.2.0"
+  },
+  "eslintConfig": {
+    "extends": "iplayer-es6"
+  },
+  "dependencies": {}
+}
