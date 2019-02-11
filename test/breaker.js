@@ -2,7 +2,7 @@
 
 const assert = require('chai').assert;
 const { Defaults } = require('../lib/breaker');
-const createBreaker = require('../index');
+const { createBreaker } = require('../index');
 
 const command = {
   execute: function execute(value, callback) {

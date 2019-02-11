@@ -2,7 +2,9 @@
 
 const { Breaker } = require('./lib/breaker');
 
-module.exports = function createBreaker(impl, options) {
+module.exports.Breaker = Breaker;
+
+module.exports.createBreaker = function createBreaker(impl, options) {
   if (typeof impl === 'function') {
     impl = { execute: impl };
   }
