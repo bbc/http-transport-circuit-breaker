@@ -12,8 +12,7 @@
     "type": "git",
     "url": "https://github.com/bbc/http-transport-circuit-breaker.git"
   },
-  "author": "ibl-team@lists.forge.bbc.co.uk",
-  "license": "ISC",
+  "license": "Apache-2.0",
   "bugs": {
     "url": "https://github.com/bbc/http-transport-circuit-breaker/issues"
   },
