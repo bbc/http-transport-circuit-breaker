@@ -11,7 +11,7 @@ npm install --save @bbc/http-transport-circuit-breaker
 ## Usage
 
 ```js
-const Levee = require('levee');
+const { createBreaker } = require('@bbc/http-transport-circuit-breaker');
 const request = require('request');
 
 const options = {
@@ -20,7 +20,7 @@ const options = {
     resetTimeout: 30000
 };
 
-const circuit = Levee.createBreaker(request.get, options);
+const circuit = createBreaker(request.get, options);
 circuit.run('http://www.google.com', (err, req, payload) => {
     console.log(err || payload);
 });
