@@ -1,6 +1,6 @@
 {
   "name": "@bbc/http-transport-circuit-breaker",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Basic circuit breaker based on Levee.",
   "main": "index.js",
   "scripts": {
