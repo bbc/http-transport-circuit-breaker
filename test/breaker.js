@@ -16,6 +16,15 @@ const failure = {
   }
 };
 
+const devilishErrorMsg = "Can circuit breaker handle me 😈"
+
+const error = {
+  execute: function execute(value, callback) {
+    if (callback) callback(value);
+    else throw Error(devilishErrorMsg);
+  }
+};
+
 const timeout = {
   execute: function execute(value, callback) {
     setTimeout(callback, 20, 'ok');
@@ -302,6 +311,38 @@ describe('Circuit Breaker', () => {
         assert.ok(err);
         assert.equal(err.message, openErrMsg);
       });
+    });
+  });
+
+  it('handles actual errors rather just http 4XX/5XXs', () => {
+    const openErrMsg = "I'm open! You aren't getting past me.";
+    const breaker = createBreaker(error, { maxFailures: 2, openErrMsg });
+
+    assert.ok(breaker.isClosed());
+
+    try {
+      // upstream will error so whatever
+      breaker.run("whatever");
+    } catch (e) {
+      assert.equal(e.message, devilishErrorMsg);
+      assert.equal(breaker._numFailures, 1);
+      assert.ok(breaker.isClosed());
+    }
+
+    try {
+      // upstream will error so whatever
+      breaker.run("whatever");
+    } catch (e) {
+      assert.equal(e.message, devilishErrorMsg);
+      assert.equal(breaker._numFailures, 2);
+      assert.ok(breaker.isOpen());
+    }
+
+    // passing callback here prevents an early error and lets us check the breaker is properly open. 
+    breaker.run("actually something", (err) => {
+      assert.equal(err.message, openErrMsg);
+      assert.equal(breaker._numFailures, 2);
+      assert.ok(breaker.isOpen());
     });
   });
 });
