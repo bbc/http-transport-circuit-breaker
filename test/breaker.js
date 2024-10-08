@@ -18,10 +18,15 @@ const failure = {
 
 const devilishErrorMsg = "Can circuit breaker handle me 😈"
 
-const error = {
-  execute: function execute(value, callback) {
-    if (callback) callback(value);
-    else throw Error(devilishErrorMsg);
+const errorTwice = () => {
+  let timesCalled = 0;
+  return {
+    execute: function execute(value, callback) {
+      timesCalled += 1;
+      if (timesCalled < 3) throw Error(devilishErrorMsg);
+
+      callback(value);
+    }
   }
 };
 
@@ -173,7 +178,7 @@ describe('Circuit Breaker', () => {
 
     breaker.run('ok', (err, data) => {
       assert.ok(err);
-      assert.equal(err.message, 'Command timeouassert.');
+      assert.equal(err.message, 'Command timeout.');
       assert.notOk(data);
       assert.ok(breaker.isOpen());
     });
@@ -314,9 +319,9 @@ describe('Circuit Breaker', () => {
     });
   });
 
-  it('handles actual errors rather just http 4XX/5XXs', () => {
+  it('handles actual errors rather just http 4XX/5XXs', (done) => {
     const openErrMsg = "I'm open! You aren't getting past me.";
-    const breaker = createBreaker(error, { maxFailures: 2, openErrMsg });
+    const breaker = createBreaker(errorTwice(), { maxFailures: 2, openErrMsg });
 
     assert.ok(breaker.isClosed());
 
@@ -338,11 +343,12 @@ describe('Circuit Breaker', () => {
       assert.ok(breaker.isOpen());
     }
 
-    // passing callback here prevents an early error and lets us check the breaker is properly open. 
+    // now the circuit is open so no upstream error but still get a circuit-breaker open error
     breaker.run("actually something", (err) => {
       assert.equal(err.message, openErrMsg);
       assert.equal(breaker._numFailures, 2);
       assert.ok(breaker.isOpen());
+      done();
     });
   });
 });
