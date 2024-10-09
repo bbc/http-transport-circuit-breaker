@@ -351,4 +351,8 @@ describe('Circuit Breaker', () => {
       done();
     });
   });
+
+  it('does not allow setting threshold and max failures', () => {
+    assert.throws(() => createBreaker(failure, {maxFailures: 1, maxFailureThreshold: 10}), 'Circuit breaker cannot be configured to use both an absolute value and a threshold.')
+  });
 });
