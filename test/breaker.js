@@ -367,8 +367,8 @@ describe('Circuit Breaker', () => {
       breaker.run("whatever");
     } catch (e) {
       assert.equal(e.message, devilishErrorMsg);
-      assert.equal(breaker._thresholdCounter.numFailures, 1);
-      assert.equal(breaker._thresholdCounter.numRequests, 1);
+      assert.equal(breaker._numFailures, 1);
+      assert.equal(breaker._numRequests, 1);
       assert.ok(breaker.isClosed());
     }
 
@@ -377,16 +377,16 @@ describe('Circuit Breaker', () => {
       breaker.run("whatever");
     } catch (e) {
       assert.equal(e.message, devilishErrorMsg);
-      assert.equal(breaker._thresholdCounter.numFailures, 2);
-      assert.equal(breaker._thresholdCounter.numRequests, 2);
+      assert.equal(breaker._numFailures, 2);
+      assert.equal(breaker._numRequests, 2);
       assert.ok(breaker.isOpen());
     }
 
     // now the circuit is open so no upstream error but still get a circuit-breaker open error
     breaker.run("actually something", (err) => {
       assert.equal(err.message, openErrMsg);
-      assert.equal(breaker._thresholdCounter.numFailures, 2);
-      assert.equal(breaker._thresholdCounter.numRequests, 2);
+      assert.equal(breaker._numFailures, 2);
+      assert.equal(breaker._numRequests, 2);
       assert.ok(breaker.isOpen());
       done();
     });
