@@ -5,7 +5,7 @@
 ## Installation
 
 ```
-npm install --save @bbc/http-transport-circuit-breaker
+pnpm install --save @bbc/http-transport-circuit-breaker
 ```
 
 ## Usage
@@ -29,11 +29,11 @@ circuit.run('http://www.google.com', (err, req, payload) => {
 ## Test
 
 ```
-npm test
+pnpm test
 ```
 
 To generate a test coverage report:
 
 ```
-npm run coverage
+pnpm run coverage
 ```
