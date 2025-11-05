@@ -14,8 +14,8 @@ minimumReleaseAgeExclude:
 ## pnpm <10 - don't run scripts from dependencies
 ignoreDepScripts: true
 
-## Prefer catalog version before installing independently 
-catalogMode: prefer
+## Do not use catalog mode because this is not a monorepo
+catalogMode: manual
 
 # Package Isolation
 
