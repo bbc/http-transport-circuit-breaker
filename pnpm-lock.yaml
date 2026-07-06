@@ -4,6 +4,11 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
+overrides:
+  handlebars@<4.7.7: '>=4.7.7'
+  lodash@<4.18.0: '>=4.18.0'
+  minimist@<1.2.8: '>=1.2.8'
+
 importers:
 
   .:
@@ -82,9 +87,6 @@ packages:
 
   async@1.5.2:
     resolution: {integrity: sha512-nSVgobk4rv61R9PUSDtYt7mPVB2olxNR5RWJcAsH676/ef11bUZwvu7+RGYrYauVdDPcO519v68wRhXQtxsV9w==}
-
-  async@2.6.1:
-    resolution: {integrity: sha512-fNEiL2+AZt6AlAw/29Cr0UDe4sRAHCpEHh54WMz+Bb7QfNcFw4h3loofyJpLeQs4Yx7yuqu/2dLgM5hKOs6HlQ==}
 
   babel-code-frame@6.26.0:
     resolution: {integrity: sha512-XqYMR2dfdGMW+hd0IUZ2PwK+fGeFkOxZJ0wY+JaQAHzt1Zx8LcvpiZD2NiGkEG8qx0CfkAOr5xt76d1e8vG90g==}
@@ -317,8 +319,8 @@ packages:
     resolution: {integrity: sha512-qBr4OuELkhPenW6goKVXiv47US3clb3/IbuWF9KNKEijAy9oeHxU9IgzjvJhHkUzhaj7rOUD7+YGWqUjLp5oSA==}
     engines: {node: '>=4.x'}
 
-  handlebars@4.1.0:
-    resolution: {integrity: sha512-l2jRuU1NAWK6AW5qqcTATWQJvNPEwkM7NEKSiv/gqOsoSQbVoWyqVEY5GS+XPQ88zLNmqASRpzfdm8d79hJS+w==}
+  handlebars@4.7.9:
+    resolution: {integrity: sha512-4E71E0rpOaQuJR2A3xDZ+GM1HyWYv1clR58tC8emQNeQe3RH7MAzSbat+V0wG78LQBo6m6bzSG/L4pBuCsgnUQ==}
     engines: {node: '>=0.4.7'}
     hasBin: true
 
@@ -400,8 +402,8 @@ packages:
     resolution: {integrity: sha512-0OO4y2iOHix2W6ujICbKIaEQXvFQHue65vUG3pb5EUomzPI90z9hsA1VsO/dbIIpC53J8gxM9Q4Oho0jrCM/yA==}
     engines: {node: '>= 0.8.0'}
 
-  lodash@4.17.11:
-    resolution: {integrity: sha512-cQKh8igo5QUhZ7lg38DYWAxMvjSAKG0A8wGSVimP07SIUEK2UO+arSRKbRZWtelMtN5V0Hkwh5ryOto/SshYIg==}
+  lodash@4.18.1:
+    resolution: {integrity: sha512-dMInicTPVE8d1e5otfwmmjlxkZoUpiVLwyeTdUsi/Caj/gfzzblBcCE5sRHV/AsjuCmxWrte2TNGSYuCeCq+0Q==}
 
   lru-cache@4.1.5:
     resolution: {integrity: sha512-sWZlbEP2OsHNkXrMl5GYk/jKk70MBng6UU4YI/qGDYbgf6YbP4EvmqISbXCoJiRKs+1bSpFHVgQxvJ17F2li5g==}
@@ -413,8 +415,8 @@ packages:
   minimatch@3.0.4:
     resolution: {integrity: sha512-yJHVQEhyqPLUTgt9B83PXu6W3rx4MvvHvSUvToogpwoGDOUQ+yDrR0HRot+yOCdCO7u4hX3pWft6kWBBcqh0UA==}
 
-  minimist@0.0.8:
-    resolution: {integrity: sha512-miQKw5Hv4NS1Psg2517mV4e4dYNaO3++hjAvLOAzKqZ61rH8NS1SK+vbfBWZ5PY/Me/bEWhUwqMghEW5Fb9T7Q==}
+  minimist@1.2.8:
+    resolution: {integrity: sha512-2yyAR8qBkN3YuheJanUpWC5U3bb5osDywNB8RzDVlDwDHbocAJveqqj1u8+SVD7jkWT4yvsHCpWqqWqAxb0zCA==}
 
   mkdirp@0.5.1:
     resolution: {integrity: sha512-SknJC52obPfGQPnjIkXbmA6+5H15E+fR+E4iR2oQ3zzCLbd7/ONua69R/Gw7AgkTLsRG+r5fzksYwWe1AgTyWA==}
@@ -438,6 +440,9 @@ packages:
   natural-compare@1.4.0:
     resolution: {integrity: sha512-OWND8ei3VtNC9h7V60qff3SVobHr996CTwgxubgyQYEpg290h9J0buyECNNJexkFm5sOajh5G116RYA1c8ZMSw==}
 
+  neo-async@2.6.2:
+    resolution: {integrity: sha512-Yd3UES5mWCSqR+qNT93S3UoYUkqAZ9lLg8a7g9rimsWmYGK8cVToA4/sF3RrshdyV3sAGMXVUmpMYOw+dLpOuw==}
+
   nopt@3.0.6:
     resolution: {integrity: sha512-4GUt3kSEYmk4ITxzB/b9vaIDfUVWN/Ml1Fwl11IlnIG2iaJ9O6WXZ9SrYM9NLI8OCBieN2Y8SWC2oJV0RQ7qYg==}
     hasBin: true
@@ -452,9 +457,6 @@ packages:
   onetime@2.0.1:
     resolution: {integrity: sha512-oyyPpiMaKARvvcgip+JV+7zci5L8D1W9RZIz2l1o08AM3pfspitVWnPt3mzHcBPp12oYMTy0pqrFs/C+m3EwsQ==}
     engines: {node: '>=4'}
-
-  optimist@0.6.1:
-    resolution: {integrity: sha512-snN4O4TkigujZphWLN0E//nQmm7790RYaE53DdL7ZYwee2D8DDo9/EyYiKUfN3rneWUjhJnueija3G9I2i0h3g==}
 
   optionator@0.8.2:
     resolution: {integrity: sha512-oCOQ8AIC2ciLy/sE2ehafRBleBgDLvzGhBRRev87sP7ovnbvQfqpc3XFI0DhHey2OfVoNV91W+GPC6B3540/5Q==}
@@ -636,10 +638,6 @@ packages:
     resolution: {integrity: sha512-HxJdYWq1MTIQbJ3nw0cqssHoTNU267KlrDuGZ1WYlxDStUtKUhOaJmh112/TZmHxxUfuJqPXSOm7tDyas0OSIQ==}
     hasBin: true
 
-  wordwrap@0.0.3:
-    resolution: {integrity: sha512-1tMA907+V4QmxV7dbRvb4/8MaRALK6q9Abid3ndMYnbyo8piisCmeONVqVSXqQA3KaP4SLt5b7ud6E2sqP8TFw==}
-    engines: {node: '>=0.4.0'}
-
   wordwrap@1.0.0:
     resolution: {integrity: sha512-gvVzJFlPycKc5dZN4yPkP8w7Dc37BtP1yczEneOb4uq34pXZcvrtRTmWV8W+Ume+XCxKgbjM+nevkyFPMybd4Q==}
 
@@ -698,10 +696,6 @@ snapshots:
   assertion-error@1.1.0: {}
 
   async@1.5.2: {}
-
-  async@2.6.1:
-    dependencies:
-      lodash: 4.17.11
 
   babel-code-frame@6.26.0:
     dependencies:
@@ -858,7 +852,7 @@ snapshots:
       js-yaml: 3.12.1
       json-stable-stringify-without-jsonify: 1.0.1
       levn: 0.3.0
-      lodash: 4.17.11
+      lodash: 4.18.1
       minimatch: 3.0.4
       mkdirp: 0.5.1
       natural-compare: 1.4.0
@@ -965,11 +959,12 @@ snapshots:
 
   growl@1.10.5: {}
 
-  handlebars@4.1.0:
+  handlebars@4.7.9:
     dependencies:
-      async: 2.6.1
-      optimist: 0.6.1
+      minimist: 1.2.8
+      neo-async: 2.6.2
       source-map: 0.6.1
+      wordwrap: 1.0.0
     optionalDependencies:
       uglify-js: 3.4.9
 
@@ -1006,7 +1001,7 @@ snapshots:
       cli-width: 2.2.0
       external-editor: 2.2.0
       figures: 2.0.0
-      lodash: 4.17.11
+      lodash: 4.18.1
       mute-stream: 0.0.7
       run-async: 2.3.0
       rx-lite: 4.0.8
@@ -1032,7 +1027,7 @@ snapshots:
       escodegen: 1.8.1
       esprima: 2.7.3
       glob: 5.0.15
-      handlebars: 4.1.0
+      handlebars: 4.7.9
       js-yaml: 3.12.1
       mkdirp: 0.5.1
       nopt: 3.0.6
@@ -1058,7 +1053,7 @@ snapshots:
       prelude-ls: 1.1.2
       type-check: 0.3.2
 
-  lodash@4.17.11: {}
+  lodash@4.18.1: {}
 
   lru-cache@4.1.5:
     dependencies:
@@ -1071,11 +1066,11 @@ snapshots:
     dependencies:
       brace-expansion: 1.1.11
 
-  minimist@0.0.8: {}
+  minimist@1.2.8: {}
 
   mkdirp@0.5.1:
     dependencies:
-      minimist: 0.0.8
+      minimist: 1.2.8
 
   mocha@5.2.0:
     dependencies:
@@ -1099,6 +1094,8 @@ snapshots:
 
   natural-compare@1.4.0: {}
 
+  neo-async@2.6.2: {}
+
   nopt@3.0.6:
     dependencies:
       abbrev: 1.0.9
@@ -1112,11 +1109,6 @@ snapshots:
   onetime@2.0.1:
     dependencies:
       mimic-fn: 1.2.0
-
-  optimist@0.6.1:
-    dependencies:
-      minimist: 0.0.8
-      wordwrap: 0.0.3
 
   optionator@0.8.2:
     dependencies:
@@ -1250,7 +1242,7 @@ snapshots:
       ajv: 5.5.2
       ajv-keywords: 2.1.1(ajv@5.5.2)
       chalk: 2.4.2
-      lodash: 4.17.11
+      lodash: 4.18.1
       slice-ansi: 1.0.0
       string-width: 2.1.1
 
@@ -1281,8 +1273,6 @@ snapshots:
   which@1.3.1:
     dependencies:
       isexe: 2.0.0
-
-  wordwrap@0.0.3: {}
 
   wordwrap@1.0.0: {}
 
