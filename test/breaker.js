@@ -1,6 +1,6 @@
 'use strict';
 
-const assert = require('chai').assert;
+const assert = require('assert');
 const { Defaults } = require('../lib/breaker');
 const { createBreaker } = require('../index');
 
@@ -37,7 +37,7 @@ describe('Circuit Breaker', () => {
     assert.ok(circuitBreaker.close);
 
     // No fallback by default
-    assert.notOk(circuitBreaker.fallback);
+    assert.ok(!circuitBreaker.fallback);
 
     // Settings
     assert.ok(circuitBreaker.settings);
@@ -47,8 +47,8 @@ describe('Circuit Breaker', () => {
 
     // State
     assert.ok(circuitBreaker.isClosed());
-    assert.notOk(circuitBreaker.isOpen());
-    assert.notOk(circuitBreaker.isHalfOpen());
+    assert.ok(!circuitBreaker.isOpen());
+    assert.ok(!circuitBreaker.isHalfOpen());
   });
 
   it('sets the state', () => {
@@ -60,18 +60,18 @@ describe('Circuit Breaker', () => {
 
     breaker.open();
     assert.ok(breaker.isOpen());
-    assert.notOk(breaker.isClosed());
-    assert.notOk(breaker.isHalfOpen());
+    assert.ok(!breaker.isClosed());
+    assert.ok(!breaker.isHalfOpen());
 
     breaker.halfOpen();
-    assert.notOk(breaker.isOpen());
-    assert.notOk(breaker.isClosed());
+    assert.ok(!breaker.isOpen());
+    assert.ok(!breaker.isClosed());
     assert.ok(breaker.isHalfOpen());
 
     breaker.close();
-    assert.notOk(breaker.isOpen());
+    assert.ok(!breaker.isOpen());
     assert.ok(breaker.isClosed());
-    assert.notOk(breaker.isHalfOpen());
+    assert.ok(!breaker.isHalfOpen());
 
     // Break the Breaker
     breaker.open();
@@ -83,10 +83,9 @@ describe('Circuit Breaker', () => {
 
       breaker.run('ok', (err, data) => {
         // Succeeded, so half-open should transition to closed.
-        assert.error(err);
+        assert.ifError(err);
         assert.ok(data);
         assert.ok(breaker.isClosed());
-        assert.end();
       });
 
     }, options.resetTimeout * 2);
@@ -100,13 +99,13 @@ describe('Circuit Breaker', () => {
     breaker.run('not ok', (err, data) => {
       assert.ok(err);
       assert.equal(err.message, 'not ok');
-      assert.notOk(data);
+      assert.ok(!data);
       assert.ok(breaker.isOpen());
 
       breaker.run('not ok', (err, data) => {
         assert.ok(err);
         assert.equal(err.message, 'Command not available.');
-        assert.notOk(data);
+        assert.ok(!data);
         assert.ok(breaker.isOpen());
       });
     });
@@ -130,12 +129,12 @@ describe('Circuit Breaker', () => {
 
     breaker.run('not ok', (err, data) => {
       assert.ok(err);
-      assert.notOk(data);
+      assert.ok(!data);
       assert.ok(breaker.isClosed());
       assert.ok(fallback.isClosed());
 
       breaker.run('ok', (err, data) => {
-        assert.notOk(err);
+        assert.ok(!err);
         assert.ok(data);
         assert.ok(breaker.isOpen());
         assert.ok(fallback.isClosed());
@@ -164,8 +163,8 @@ describe('Circuit Breaker', () => {
 
     breaker.run('ok', (err, data) => {
       assert.ok(err);
-      assert.equal(err.message, 'Command timeouassert.');
-      assert.notOk(data);
+      assert.equal(err.message, 'Command timeout.');
+      assert.ok(!data);
       assert.ok(breaker.isOpen());
     });
   });
@@ -178,13 +177,13 @@ describe('Circuit Breaker', () => {
     breaker.run('not ok', (err, data) => {
       assert.ok(err);
       assert.equal(err.message, 'not ok');
-      assert.notOk(data);
+      assert.ok(!data);
       assert.ok(breaker.isClosed());
 
       breaker.run('not ok', (err, data) => {
         assert.ok(err);
         assert.equal(err.message, 'not ok');
-        assert.notOk(data);
+        assert.ok(!data);
         assert.ok(breaker.isClosed());
       });
     });
@@ -212,7 +211,7 @@ describe('Circuit Breaker', () => {
     breaker.run('not ok', (err, data) => {
       assert.ok(err);
       assert.equal(err.message, 'not ok');
-      assert.notOk(data);
+      assert.ok(!data);
       assert.ok(breaker.isOpen());
 
       // Wait for reset
@@ -224,7 +223,7 @@ describe('Circuit Breaker', () => {
         breaker.run('not ok', (err, data) => {
           assert.ok(err);
           assert.equal(err.message, 'not ok');
-          assert.notOk(data);
+          assert.ok(!data);
           assert.ok(breaker.isOpen());
 
           // Wait for reset
@@ -234,7 +233,7 @@ describe('Circuit Breaker', () => {
 
             // Succeed 3..n times
             breaker.run('ok', (err, data) => {
-              assert.error(err);
+              assert.ifError(err);
               assert.equal(data, 'ok');
               assert.ok(breaker.isClosed());
             });

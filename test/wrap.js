@@ -1,6 +1,6 @@
 'use strict';
 
-const assert = require('chai').assert;
+const assert = require('assert');
 const wrap = require('../lib/wrap');
 
 function sync(value, callback) {
@@ -26,7 +26,7 @@ describe('Function wrapper', () => {
     fn('ok', (err, data) => {
       assert.ifError(err);
       assert.equal(data, 'ok');
-      assert.isFalse(called);
+      assert.strictEqual(called, false);
     });
     called = false;
   });
@@ -41,7 +41,7 @@ describe('Function wrapper', () => {
     fn('ok', (err, data) => {
       assert.ifError(err);
       assert.equal(data, 'ok');
-      assert.isFalse(called);
+      assert.strictEqual(called, false);
     });
     called = false;
   });
@@ -57,7 +57,7 @@ describe('Function wrapper', () => {
     fn('ok', (err, data) => {
       assert.ifError(err);
       assert.equal(data, context);
-      assert.isFalse(called);
+      assert.strictEqual(called, false);
     });
     called = false;
   });
@@ -74,7 +74,7 @@ describe('Function wrapper', () => {
     fn('ok', (err, data) => {
       assert.ifError(err);
       assert.equal(data, context);
-      assert.isFalse(called);
+      assert.strictEqual(called, false);
     });
     called = false;
   });
