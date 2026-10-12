@@ -1,5 +1,3 @@
-'use strict';
-
 const { Breaker } = require('./lib/breaker');
 
 module.exports.Breaker = Breaker;
