@@ -1,6 +1,4 @@
-'use strict';
-
-const assert = require('assert');
+const assert = require('node:assert');
 const wrap = require('../lib/wrap');
 
 function sync(value, callback) {
@@ -11,7 +9,7 @@ function async(value, callback) {
   setTimeout(callback, 0, null, value);
 }
 
-function syncContext(value, callback) {
+function syncContext(_value, callback) {
   callback(null, this);
 }
 
