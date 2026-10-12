@@ -1,0 +1,21 @@
+# Version control / CI
+.git
+.github
+.gitignore
+
+# Tests
+test
+coverage
+
+# Lint / format config
+biome.json
+.jsbeautifyrc
+
+# Package manager / tooling config
+.npmrc
+.nvmrc
+pnpm-lock.yaml
+pnpm-workspace.yaml
+
+# Logs
+*.log
